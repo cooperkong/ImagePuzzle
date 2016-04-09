@@ -1,0 +1,29 @@
+# Add some environment variables
+machine:
+    java:
+        version: oraclejdk8
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter "tools"
+    - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.2"
+
+test:
+    pre:
+        # emulator startup need some minutes that's why start it before first build/test steps for build speed up
+        - emulator -avd circleci-android22 -no-audio -no-window:
+            background: true
+            parallel: true
+    override:
+        # run unit tests
+        - ./gradlew test -PdisablePreDex
+        # wait for it to have booted
+        - circle-android wait-for-boot
+        - sleep 30
+        # Unlock the screen
+        - adb shell input keyevent 82
+        # run tests  against the emulator.
+        - ./gradlew connectedMockDebugAndroidTest -PdisablePreDex;
+        # copy test results
+        - ./gradlew testMockDebugUnitTestCoverage coveralls --info
+        - cp -r app/build/reports $CIRCLE_TEST_REPORTS/CoverageReports
+        - cp -r app/build/outputs $CIRCLE_TEST_REPORTS/CoverageReportsOutputs
