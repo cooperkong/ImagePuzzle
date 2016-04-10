@@ -88,28 +88,14 @@ public class TileView extends ImageView {
 	 * @return get x position for all versions of Android
 	 */
 	public float getXPos() {
-		if (Build.VERSION.SDK_INT >= 11) {
-			// native and more precise
-			return getX();
-		} else {
-			// emulated on older versions of Android
-			RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) getLayoutParams();
-			return params.leftMargin;
-		}
+		return getX();
 	}
 
 	/**
 	 * @return get y position for all versions of Android
 	 */
 	public float getYPos() {
-		if (Build.VERSION.SDK_INT >= 11) {
-			// native and more precise
-			return getY();
-		} else {
-			// emulated on older versions of Android
-			RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) getLayoutParams();
-			return params.topMargin;
-		}
+		return getY();
 	}
 
 	public static TileView newInstance(TileView input, int originalIndex){
@@ -117,7 +103,6 @@ public class TileView extends ImageView {
 		ret.coordinate = input.coordinate;
 		ret.tileSize = input.tileSize;
 		ret.numberOfDrags = input.numberOfDrags;
-		ret.setTag("cao ni ma");
 		return ret;
 	}
 

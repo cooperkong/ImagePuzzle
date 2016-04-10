@@ -1,50 +1,57 @@
 Feature: Functionality of the game board such as click and swipe
+  Tile Index Matrix
+  |0|1|2|3|
+  |4|5|6|7|
+  |8|9|10|11|
+  |12|13|14|15->empty tile|
+
+  Scenario Outline: Click on the available tile and rotate device
+    Given I open the puzzle app
+    When I click on the available tile <index>
+    And I rotate the device
+    Then empty tile will move to <x> <y>
+    Examples:
+      | index | x | y |
+      | 11    | 2 | 3 |
+      | 14    | 3 | 2 |
+
+
+  Scenario Outline: Click on the available tile and rotate device
+    Given I open the puzzle app
+    When I click on the available tile <index>
+    And I rotate the device
+    Then empty tile will move to <x> <y>
+    And I rotate the device
+    Then empty tile will move to <x> <y>
+    Examples:
+      | index | x | y |
+      | 11    | 2 | 3 |
+      | 14    | 3 | 2 |
+
 
   Scenario Outline: Click on the available tile will move the tile
     Given I open the puzzle app
     When I click on the available tile <index>
-    Then the tile will move into position
+    Then empty tile will move to <x> <y>
     Examples:
-      | index |
-      | 11    |
-      | 14    |
+      | index | x | y |
+      | 7    | 1 | 3 |
+      | 11    | 2 | 3 |
+      | 13    | 3 | 1 |
+      | 14    | 3 | 2 |
 
-  Scenario: Drag on the available tile will move vertically
+  Scenario Outline: Drag on the available tile will move horizontally
     Given I open the puzzle app
-    When I drag on the available tile set
-    Then the available tiles will move vertically
-
-
-  Scenario: Drag on the available tile will move horizontally
-    Given I open the puzzle app
-    When I drag on the available tile set
-    Then the available tiles will move horizontally
-
-
-  Scenario Outline: Click on the available tile and rotate device
-    Given I open the puzzle app
-    When I click on the available tile <index>
-    And I rotate the device
-    Then the tile order will remain the same
+    When I swipe right on the available tile set <index>
+    Then empty tile will move to <x> <y>
     Examples:
-      | index |
-      | 11    |
-      | 14    |
+      | index | x   | y   |
+      |  12   | 3   | 0  |
 
-
-  Scenario Outline: Click on the available tile and rotate device
+  Scenario Outline: Drag on the available tile will move vertically
     Given I open the puzzle app
-    When I click on the available tile <index>
-    And I rotate the device
-    And I rotate the device
-    Then the tile order will remain the same
+    When I swipe down on the available tile set <index>
+    Then empty tile will move to <x> <y>
     Examples:
-      | index |
-      | 11    |
-      | 14    |
-
-
-  Scenario: Click on the empty space
-    Given I open the puzzle app
-    When I click on the empty
-    Then the tile order will remain the same
+      | index | x    |  y |
+      | 3     | 0    | 3 |

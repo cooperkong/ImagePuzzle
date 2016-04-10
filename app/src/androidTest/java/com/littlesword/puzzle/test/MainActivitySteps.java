@@ -71,9 +71,6 @@ public class MainActivitySteps extends ActivityInstrumentationTestCase2<MainActi
         onView(withId(R.id.game_board)).check(matches(hasExactChildren(is(arg0 * arg1))));
         //error scenario check, make sure the test is valid by test again an odd number
         onView(withId(R.id.game_board)).check(matches(not(hasExactChildren(is(13)))));
-
-
-
     }
 
     @And("^I rotate the device$")
