@@ -18,8 +18,8 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.google.common.truth.Truth.assertThat;
-import static com.littlesword.puzzle.test.TestUtils.hasExactChildren;
-import static com.littlesword.puzzle.test.TestUtils.rotateScreen;
+import static com.littlesword.puzzle.test.util.TestUtils.hasExactChildren;
+import static com.littlesword.puzzle.test.util.TestUtils.rotateScreen;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 
@@ -79,7 +79,7 @@ public class MainActivitySteps extends ActivityInstrumentationTestCase2<MainActi
     @And("^I rotate the device$")
     public void iRotateTheDevice() throws Throwable {
         // rotate device
-        rotateScreen(mActivity);
+        rotateScreen(getActivity());
         // app still shows the main board
         onView(withId(R.id.game_board)).check(matches(isDisplayed()));
     }

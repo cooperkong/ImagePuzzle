@@ -5,8 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 
 import com.littlesword.puzzle.Injection;
+import com.littlesword.puzzle.R;
 import com.littlesword.puzzle.customview.TileView;
 
 import java.util.ArrayList;
@@ -80,11 +82,9 @@ public class TileSlicer {
 	 * Randomizes slices in case no previous state is available.
 	 */
 	public void randomizeSlices() {
-		// randomize first slices
-//		Collections.shuffle(slices);
 		// last one is empty slice
 		slices.add(null);
-		Injection.getBoardMaker().setupBoardElement(slices);
+//		Injection.getBoardMaker().setupBoardElement(slices);
 
 		sliceOrder = null;
 	}
@@ -125,6 +125,7 @@ public class TileSlicer {
 				originalIndex = sliceOrder.get(lastSliceServed++);
 			}
 			tile = new TileView(context, originalIndex);
+			tile.setId(R.id.tileView + originalIndex);
 			if (slices.get(0) == null) {
 				// empty slice
 				tile.setEmpty(true);

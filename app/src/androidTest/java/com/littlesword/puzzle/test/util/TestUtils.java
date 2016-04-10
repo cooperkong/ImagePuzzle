@@ -1,4 +1,4 @@
-package com.littlesword.puzzle.test;
+package com.littlesword.puzzle.test.util;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,9 +8,14 @@ import android.support.test.InstrumentationRegistry;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.littlesword.puzzle.customview.TileView;
+import com.littlesword.puzzle.model.Point;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Created by kongw1 on 9/04/16.
@@ -52,5 +57,15 @@ public class TestUtils {
         activity.setRequestedOrientation(
                 (orientation == Configuration.ORIENTATION_PORTRAIT) ?
                         ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    /**
+     * Verify if tile is in desire position
+     * @param view
+     * @param point
+     */
+    public static void checkTileInPosition(TileView view, Point point){
+        assertThat(view.coordinate.column).isEqualTo(point.column);
+        assertThat(view.coordinate.row).isEqualTo(point.row);
     }
 }
