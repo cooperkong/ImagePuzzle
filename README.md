@@ -5,10 +5,11 @@
 A image puzzle project where user can **click/swipe/drag and drop** an available tile to solve the puzzle.
 
 
-### Outline
+Outline
+====
 This project is created on top of an existing open source [project](https://github.com/davidvavra/Android-Slider-Puzzle) 4 years ago.It contains several bug fixes, optimizations, better coding structure and UI tests.
 
-### Develpoment
+Develpoment
 ====
 1. Android Studio + Gradle
 2. Design pattern
@@ -23,11 +24,11 @@ This project is created on top of an existing open source [project](https://gith
 6. Code coverage
  * Coveralls
 
-### Known issues
+Known issues
 ====
 Tiles can be unclickable under very rare cases.(still under investigation)
 
-### Future thoughts
+Future thoughts
 ====
 1. Create shuffle algorithms to shuffle tiles
 2. algorithm needs to be smart to not create unsolvable puzzles
