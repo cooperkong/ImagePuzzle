@@ -5,6 +5,16 @@ Feature: Functionality of the game board such as click and swipe
   |8|9|10|11|
   |12|13|14|15->empty tile|
 
+  Scenario Outline: Click on the various locations
+    Given I open the puzzle app
+    When I click on the available tile <index>
+    And I click on the available tile <index2>
+    And I click on the available tile <index3>
+    Then empty tile will move to <x> <y>
+    Examples:
+      | index |index2|index3| x | y |
+      | 11    |10    |  8    | 2 | 0 |
+
   Scenario Outline: Click on the available tile and rotate device
     Given I open the puzzle app
     When I click on the available tile <index>
