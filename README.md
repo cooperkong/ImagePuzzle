@@ -10,7 +10,7 @@ Outline
 This project is created on top of an existing open source [project](https://github.com/davidvavra/Android-Slider-Puzzle) 4 years ago.It contains several bug fixes, optimizations, better coding structure and UI tests.
 Screenshot
 ====
-![](http://imgur.com/2akrpnI)
+![](https://raw.githubusercontent.com/cooperkong/ImagePuzzle/master/app/example.gif)
 
 Develpoment
 ====
