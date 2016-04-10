@@ -15,6 +15,9 @@ Screenshot
 Develpoment
 ====
 1. Android Studio + Gradle
+ * 2 product flavors
+  * Dev -> easier setup to debug
+  * Prod -> shuffle all tiles (TODO: need to fix tile order in logic)
 2. Design pattern
  * MVP to separate the view and logic layer
 3. BDD using Cucumber
